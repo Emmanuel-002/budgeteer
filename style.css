@@ -1,0 +1,133 @@
+html{
+    box-sizing: border-box;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.darkmode{
+    background-color: #000;
+    color: #fff;
+}
+.lightmode{
+    background-color: #fff;
+    color: #2c2c2c;
+}
+header{
+    position: sticky;
+    top: 0;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+header,
+footer{
+    background-color: rgb(137, 137, 252);
+    color: #fff;
+    padding: 0.3em;
+    text-align: center;
+}
+header h3{
+   float: right;
+}
+header span{
+    float: right;
+    background-color: rgb(42, 42, 252);
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+main{
+    margin: 5px auto;
+    padding: 10px;
+}
+main div.balance{
+    background-color: whitesmoke;
+    color: #2c2c2c;
+    padding: 1rem;
+}
+.balance h3,
+.balance p{
+    text-align: center;
+    margin: 0;
+}
+h3{
+    padding: 0;
+}
+form#income,
+form#expenses{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    color: #2c2c2c;
+    background-color: whitesmoke;
+    padding: 1rem;
+}
+form input{
+    height: 20px;
+    outline-color: rgb(137, 137, 252);
+}
+form input[type="submit"]{
+    background-color: rgb(42, 42, 252);
+    border: 1px solid rgb(42, 42, 252);
+    color: #fff;
+    padding: 3px;
+    width: 80px;
+    height: 26px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+div.history{
+    margin: 1rem 0;
+    padding: 10px;
+    text-align: center;
+}
+div.history h3{
+    text-align: center;
+}
+table{
+    background-color: whitesmoke;
+    color: #2c2c2c;
+    margin: 1px auto;
+}
+thead{
+    background-color: rgb(42, 42, 252);
+    border: 1px solid  rgb(42, 42, 252);
+    color: #fff;
+}
+th{
+    padding: 10px;
+    text-align: center;
+}
+table,td{
+    border: 1px solid #2c2c2c;
+    border-collapse: collapse;
+    text-align: left;
+}
+footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    align-items: baseline;
+    text-align: center;
+}
+@media all and (max-width: 600px){
+    form div{
+        display: flex;
+        flex-flow: column;
+    }
+    form input{
+        margin: 5px;
+        width: 100%;
+    }
+}
+#print{
+    margin: 2rem;
+    padding: 0.5rem;
+    font-size: 20px;
+    background-color: rgb(42, 42, 252);
+    border: rgb(42, 42, 252);
+    color: #fff;
+    float: right;
+    border-radius: 7px;
+}
