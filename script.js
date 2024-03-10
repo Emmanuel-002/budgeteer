@@ -87,7 +87,7 @@ expensesForm.addEventListener("submit",(event)=>{
 
 function render(){
     const {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
-    displayBalance.innerText = `&copy;${balance}`;
+    displayBalance.innerText = `#${balance}`;
     historyDiv.innerHTML =""
     if(transactions.length === 0){
         historyDiv.innerText = "No Transaction History"
@@ -124,7 +124,7 @@ function render(){
             tbody.append(tr)
             table.append(tbody)
             historyDiv.append(h3,table)
-            amount.innerText=`$${parseInt(elm["entry"])}`
+            amount.innerText=`#${parseInt(elm["entry"])}`
             type.innerText=elm["source"]
             source.innerText=elm["type"]
             date.innerText=new Date().toLocaleDateString()
