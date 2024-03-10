@@ -8,6 +8,8 @@ const sourceInput = document.querySelector(".income_source")
 const expensesInput = document.querySelector(".expenses_value")
 const categoryInput = document.querySelector(".expenses_category")
 const historyDiv = document.querySelector(".history")
+const printBtn = document.querySelector("#print")
+const clearBtn = document.querySelector("#clear")
 
 // localStorage.removeItem("transactions")
 
@@ -39,16 +41,16 @@ switchBtn.addEventListener("click",(event)=>{
    }
 })
 
-incomeInput.addEventListener("keypress",(event)=>{
-    if (!(event.charCode===46||(event.charCode>47&&event.charCode<58))){
-        event.preventDefault()
-    }
-})
-expensesInput.addEventListener("keypress",(event)=>{
-    if (!(event.keyCode===46||(event.keyCode>47&&event.keyCode<58))){
-        event.preventDefault()
-    }
-})
+// incomeInput.addEventListener("keypress",(event)=>{
+//     if (!(event.charCode===46||(event.charCode>47&&event.charCode<58))){
+//         event.preventDefault()
+//     }
+// })
+// expensesInput.addEventListener("keypress",(event)=>{
+//     if (!(event.keyCode===46||(event.keyCode>47&&event.keyCode<58))){
+//         event.preventDefault()
+//     }
+// })
 sourceInput.addEventListener("keyup",(event)=>{
     event.target.value = (sentenceCase(event.target.value))
 })
@@ -61,7 +63,6 @@ incomeForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = incomeInput.value
     const source = sourceInput.value
-    if((/^[0-9]/g).test(entry)){
     let data = JSON.parse(localStorage.getItem("transactions"))
     let {transactions,balance,mode} = data
     balance= Number(balance) + Number(entry)
@@ -70,16 +71,12 @@ incomeForm.addEventListener("submit",(event)=>{
     render()
     incomeInput.value=""
     sourceInput.value=""
-}else{
-    alert("Error entry")
-}
     });
 
 expensesForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = expensesInput.value
     const source = categoryInput.value
-    if((/^[0-9]/g).test(entry)){
     let data = JSON.parse(localStorage.getItem("transactions"))
     let {transactions,balance,mode} = data
     balance= Number(balance) - Number(entry)
@@ -88,9 +85,6 @@ expensesForm.addEventListener("submit",(event)=>{
     render()
     expensesInput.value=""
     categoryInput.value=""
-    }else{
-        alert("Error entry")
-    }
     })
 
 function render(){
@@ -147,12 +141,16 @@ const sentenceCase = str => {
     });
   };
 
-year.innerText = `${new Date().getFullYear()}`
-
-document.querySelector("#print").addEventListener("click",(event)=>{
+printBtn.addEventListener("click",(event)=>{
     let printContent = document.querySelector(".history").innerHTML
     let originalContent = document.body.innerHTML;
     document.body.innerHTML = printContent;
     window.print();
     document.body.innerHTML = originalContent;
 })
+clearBtn.addEventListener("click",()=>{
+    localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
+    render()
+})
+
+year.innerText = `${new Date().getFullYear()}`
