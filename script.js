@@ -95,7 +95,7 @@ function render(){
         historyDiv.innerText = "No Transaction History"
     }
     else{
-        historyDiv.innerText = ""
+        historyDiv.innerHTML = ""
         const h3 = document.createElement("h3")
         h3.innerText = "Transaction History
         const table = document.createElement("table")
