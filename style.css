@@ -121,8 +121,9 @@ footer{
         width: 100%;
     }
 }
-#print{
-    margin: 2rem;
+#print,
+#clear{
+    margin: 0 0.5rem 2rem 0.5rem;
     padding: 0.5rem;
     font-size: 20px;
     background-color: rgb(42, 42, 252);
@@ -130,4 +131,7 @@ footer{
     color: #fff;
     float: right;
     border-radius: 7px;
+}
+#clear{
+    background-color: #f00;
 }
