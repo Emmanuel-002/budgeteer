@@ -10,6 +10,8 @@ const categoryInput = document.querySelector(".expenses_category")
 const historyDiv = document.querySelector(".history")
 const printBtn = document.querySelector("#print")
 const clearBtn = document.querySelector("#clear")
+const naira = document.createElement("span")
+naira.innerHTML = "&#x20A6;"
 
 if(localStorage.getItem("transactions") === null){
     localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
@@ -87,8 +89,8 @@ expensesForm.addEventListener("submit",(event)=>{
 
 function render(){
     const {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
-    displayBalance.innerText = `#${balance}`;
-    historyDiv.innerHTML =""
+   displayBalance.innerText = `${balance}`;
+    displayBalance.prepend(naira)
     if(transactions.length === 0){
         historyDiv.innerText = "No Transaction History"
     }
@@ -120,11 +122,14 @@ function render(){
             const amount = document.createElement("td")
             const date = document.createElement("td")
             const time = document.createElement("td")
+            const naira = document.createElement("span")
+            naira.innerHTML = "&#x20A6;"
             tr.append(source,type,amount,date,time)
             tbody.append(tr)
             table.append(tbody)
             historyDiv.append(h3,table)
-            amount.innerText=`#${parseInt(elm["entry"])}`
+            amount.innerHTML=`${parseInt(elm["entry"])}`
+            amount.prepend(naira)
             type.innerText=elm["source"]
             source.innerText=elm["type"]
             date.innerText=new Date().toLocaleDateString()
