@@ -11,8 +11,6 @@ const historyDiv = document.querySelector(".history")
 const printBtn = document.querySelector("#print")
 const clearBtn = document.querySelector("#clear")
 
-// localStorage.removeItem("transactions")
-
 if(localStorage.getItem("transactions") === null){
     localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
     render()
@@ -89,7 +87,7 @@ expensesForm.addEventListener("submit",(event)=>{
 
 function render(){
     const {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
-    displayBalance.innerText = `$${balance}`;
+    displayBalance.innerText = `&copy;${balance}`;
     historyDiv.innerHTML =""
     if(transactions.length === 0){
         historyDiv.innerText = "No Transaction History"
