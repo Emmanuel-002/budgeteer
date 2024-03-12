@@ -89,15 +89,17 @@ expensesForm.addEventListener("submit",(event)=>{
 
 function render(){
     const {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
-   displayBalance.innerText = `${balance}`;
+    displayBalance.innerText = `${balance}`;
     displayBalance.prepend(naira)
+    historyDiv.innerHTML =""
     if(transactions.length === 0){
         historyDiv.innerText = "No Transaction History"
+        clearBtn.disabled = true
+        printBtn.disabled = true
     }
     else{
-        historyDiv.innerHTML = ""
         const h3 = document.createElement("h3")
-        h3.innerText = "Transaction History
+        h3.innerText = "Transaction History"
         const table = document.createElement("table")
         const thead = document.createElement("thead")
         const tbody = document.createElement("tbody")
@@ -136,6 +138,8 @@ function render(){
             date.innerText=new Date().toLocaleDateString()
             time.innerText=new Date().toLocaleTimeString()
         })
+        clearBtn.disabled = false
+        printBtn.disabled = false
     }
 }
 
@@ -152,9 +156,16 @@ printBtn.addEventListener("click",(event)=>{
     window.print();
     document.body.innerHTML = originalContent;
 })
-clearBtn.addEventListener("click",()=>{
-    localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
-    render()
+
+clearBtn.addEventListener("click",(event)=>{
+    console.log(event.target.innerText)
+    if (event.target.innerText == "Clear"){  
+        event.target.innerText = "Confirm"
+    }else if(event.target.innerText == "Confirm"){
+        localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
+        render()
+        event.target.innerText = "Clear"
+    }
 })
 
 year.innerText = `${new Date().getFullYear()}`
