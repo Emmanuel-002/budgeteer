@@ -63,10 +63,12 @@ incomeForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = incomeInput.value
     const source = sourceInput.value
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString()
     let data = JSON.parse(localStorage.getItem("transactions"))
     let {transactions,balance,mode} = data
     balance= Number(balance) + Number(entry)
-    transactions.unshift({entry,source,type:"INCOME"})
+    transactions.unshift({entry,source,date,time,type:"INCOME"})
         localStorage.setItem("transactions",JSON.stringify({transactions,balance,mode}))
     render()
     incomeInput.value=""
@@ -77,10 +79,12 @@ expensesForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = expensesInput.value
     const source = categoryInput.value
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString()
     let data = JSON.parse(localStorage.getItem("transactions"))
     let {transactions,balance,mode} = data
     balance= Number(balance) - Number(entry)
-    transactions.unshift({entry,source,type:"EXPENSE"})
+    transactions.unshift({entry,source,date,time,type:"EXPENSE"})
         localStorage.setItem("transactions",JSON.stringify({transactions,balance,mode}))
     render()
     expensesInput.value=""
@@ -135,8 +139,8 @@ function render(){
             amount.prepend(naira)
             type.innerText=elm["source"]
             source.innerText=elm["type"]
-            date.innerText=new Date().toLocaleDateString()
-            time.innerText=new Date().toLocaleTimeString()
+            date.innerText=elm["date"]
+            timee.innerText=elm["time"]
         })
         clearBtn.disabled = false
         printBtn.disabled = false
