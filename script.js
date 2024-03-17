@@ -14,9 +14,12 @@ const naira = document.createElement("span")
 naira.innerHTML = "&#x20A6;"
 
 if(localStorage.getItem("transactions") === null){
-    localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:59250,mode:"lightmode"}))
+    localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
     render()
 }else{
+     let {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
+    balance = -59250;
+    localStorage.setItem("transactions",JSON.stringify({transactions,balance,mode:"lightmode"}))
     render()
 }
 
@@ -41,16 +44,6 @@ switchBtn.addEventListener("click",(event)=>{
    }
 })
 
-// incomeInput.addEventListener("keypress",(event)=>{
-//     if (!(event.charCode===46||(event.charCode>47&&event.charCode<58))){
-//         event.preventDefault()
-//     }
-// })
-// expensesInput.addEventListener("keypress",(event)=>{
-//     if (!(event.keyCode===46||(event.keyCode>47&&event.keyCode<58))){
-//         event.preventDefault()
-//     }
-// })
 sourceInput.addEventListener("keyup",(event)=>{
     event.target.value = (sentenceCase(event.target.value))
 })
