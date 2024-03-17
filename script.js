@@ -17,9 +17,6 @@ if(localStorage.getItem("transactions") === null){
     localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
     render()
 }else{
-     let {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
-    balance = -59250;
-    localStorage.setItem("transactions",JSON.stringify({transactions,balance,mode:"lightmode"}))
     render()
 }
 
