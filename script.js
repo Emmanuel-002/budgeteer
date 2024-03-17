@@ -17,65 +17,6 @@ if(localStorage.getItem("transactions") === null){
     localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
     render()
 }else{
-     const transactions =[
-        {
-            entry: 46650,
-            source: "EXPENSE",
-            date: "3/16/2024",
-            time: "10:10:09",
-            type: "Paid To Adah",
-        },
-        {
-             entry: 19300,
-            source: "EXPENSE",
-            date: "3/15/2024",
-            time: "20:05:15",
-            type: "Paid To Adah",
-        },
-        {
-             entry: 19300,
-            source: "INCOME",
-            date: "3/15/2024",
-            time: "17:05:55",
-            type: "Cash From Joy",
-        },
-        {
-             entry: 24000,
-            source: "INCOME",
-            date: "3/14/2024",
-            time: "11:05:55",
-            type: "Transfer From Tocherun",
-        },
-        {
-             entry: 30000,
-            source: "EXPENSE",
-            date: "3/14/2024",
-            time: "10:05:55",
-            type: "Cway Water",
-        },
-        {
-             entry: 600,
-            source: "EXPENSE",
-            date: "3/13/2024",
-            time: "15:05:55",
-            type: "Transport For Minerals",
-        },
-        {
-             entry: 33000,
-            source: "EXPENSE",
-            date: "3/13/2024",
-            time: "15:00:55",
-            type: "Minerals",
-        },
-         {
-             entry: 27000,
-            source: "INCOME",
-            date: "3/13/2024",
-            time: "14:55:05",
-            type: "Transfer From Tocherun",
-        },
-    ];
-     localStorage.setItem("transactions",JSON.stringify({transactions,balance:0,mode:"lightmode"}))
     render()
 }
 
