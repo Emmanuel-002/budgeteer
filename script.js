@@ -14,7 +14,7 @@ const naira = document.createElement("span")
 naira.innerHTML = "&#x20A6;"
 
 if(localStorage.getItem("transactions") === null){
-    localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
+    localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:59250,mode:"lightmode"}))
     render()
 }else{
     render()
