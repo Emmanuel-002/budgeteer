@@ -63,8 +63,9 @@ incomeForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = incomeInput.value
     const source = sourceInput.value
-    const date = new Date().toLocaleDateString();
-    const time = new Date().toLocaleTimeString()
+   const dateObj = new Date()
+    const date = dateObj.toLocaleDateString();
+    const time = dateObj.toLocaleTimeString()
     let data = JSON.parse(localStorage.getItem("transactions"))
     let {transactions,balance,mode} = data
     balance= Number(balance) + Number(entry)
@@ -79,8 +80,9 @@ expensesForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = expensesInput.value
     const source = categoryInput.value
-    const date = new Date().toLocaleDateString();
-    const time = new Date().toLocaleTimeString()
+    const dateObj = new Date()
+    const date = dateObj.toLocaleDateString();
+    const time = dateObj.toLocaleTimeString()
     let data = JSON.parse(localStorage.getItem("transactions"))
     let {transactions,balance,mode} = data
     balance= Number(balance) - Number(entry)
@@ -140,7 +142,7 @@ function render(){
             type.innerText=elm["source"]
             source.innerText=elm["type"]
             date.innerText=elm["date"]
-            timee.innerText=elm["time"]
+            time.innerText=elm["time"]
         })
         clearBtn.disabled = false
         printBtn.disabled = false
