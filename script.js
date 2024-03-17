@@ -75,7 +75,7 @@ if(localStorage.getItem("transactions") === null){
             type: "Transfer From Tocherun",
         },
     ];
-     localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
+     localStorage.setItem("transactions",JSON.stringify({transactions,balance:0,mode:"lightmode"}))
     render()
 }
 
