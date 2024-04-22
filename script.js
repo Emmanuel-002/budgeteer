@@ -13,6 +13,7 @@ const clearBtn = document.querySelector("#clear")
 const naira = document.createElement("span")
 naira.innerHTML = "&#x20A6;"
 
+//initialize localhost and display content on loading
 if(localStorage.getItem("transactions") === null){
     localStorage.setItem("transactions",JSON.stringify({transactions:[],balance:0,mode:"lightmode"}))
     render()
@@ -20,9 +21,11 @@ if(localStorage.getItem("transactions") === null){
     render()
 }
 
+//set mode automatically
 const data = JSON.parse(localStorage.getItem("transactions"))
 document.body.setAttribute("class",data.mode)
 
+//change mode
 switchBtn.addEventListener("click",(event)=>{
     let {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
    if(document.body.className==="lightmode"){
@@ -41,6 +44,7 @@ switchBtn.addEventListener("click",(event)=>{
    }
 })
 
+//format text in the text input fields
 sourceInput.addEventListener("keyup",(event)=>{
     event.target.value = (sentenceCase(event.target.value))
 })
@@ -48,7 +52,7 @@ categoryInput.addEventListener("keyup",(event)=>{
     event.target.value = (sentenceCase(event.target.value))
 })
 
-
+//submit income form
 incomeForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = incomeInput.value
@@ -66,6 +70,7 @@ incomeForm.addEventListener("submit",(event)=>{
     sourceInput.value=""
     });
 
+//submit expenses form
 expensesForm.addEventListener("submit",(event)=>{
     event.preventDefault()
     const entry = expensesInput.value
@@ -83,6 +88,7 @@ expensesForm.addEventListener("submit",(event)=>{
     categoryInput.value=""
     })
 
+//render localhost content
 function render(){
     const {transactions,balance,mode} = JSON.parse(localStorage.getItem("transactions"))
     displayBalance.innerText = `${balance}`;
@@ -145,6 +151,7 @@ const sentenceCase = str => {
     });
   };
 
+//print document
 printBtn.addEventListener("click",(event)=>{
     let printContent = document.querySelector(".history").innerHTML
     let originalContent = document.body.innerHTML;
@@ -153,6 +160,7 @@ printBtn.addEventListener("click",(event)=>{
     document.body.innerHTML = originalContent;
 })
 
+// clear localhost content
 clearBtn.addEventListener("click",(event)=>{
     console.log(event.target.innerText)
     if (event.target.innerText == "Clear"){  
@@ -164,4 +172,5 @@ clearBtn.addEventListener("click",(event)=>{
     }
 })
 
+//set current year
 year.innerText = `${new Date().getFullYear()}`
